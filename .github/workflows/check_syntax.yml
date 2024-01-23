@@ -55,4 +55,4 @@ jobs:
           python -m pip install numpy==1.21.2 requests==2.26.0
       - name: Run tests
         run: |
-          python -m unittest discover -v tests
+          python -m unittest discover -v main
