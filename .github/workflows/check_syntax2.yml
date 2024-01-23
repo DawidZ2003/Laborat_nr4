@@ -1,5 +1,5 @@
 #Nazwa workflow
-name: check_syntax
+name: check_syntax2
 
 on:
   push:
