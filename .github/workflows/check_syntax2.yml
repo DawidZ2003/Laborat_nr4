@@ -54,4 +54,4 @@ jobs:
           python -m pip install --upgrade pip
       - name: Run tests
         run: |
-          python3 -m unittest discover -v
+          python3 -m unittest discover -v Laborat_nr4
