@@ -1,14 +1,17 @@
+#Nazwa workflow
 name: check_syntax
 
 on:
   push:
     branches:
-      - main  # Zaktualizuj gałąź na odpowiednią, jeśli to konieczne
+      - main
 
+#Wykorzystanie opcji matrix zeby zastosowa podane wersje pythona dla podanych systemow
 jobs:
   syntax_check:
     runs-on: ${{ matrix.os }}
-    
+
+#Wyznaczenie dla jakich systemow bedziemy wykonywac kolejne kroki
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -19,6 +22,7 @@ jobs:
         exclude:
           - os: ubuntu-latest
             python-version: 3.10
+#Wykluczenie pythona w wersji 3.10 dla ubuntu
 
     steps:
       - name: Set up Python
@@ -27,18 +31,23 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: 'x64'
 
+#Aktualizacja pip
       - name: Update pip
         run: |
           python -m pip install --upgrade pip
+#Instalacja flake8
       - name: Install flake8
         run: |
           pip install flake8
+#Wyswietlenie wersji pythona
       - name: Display Python version
         run: |
           python --version
+#Analiza kodu za pomoca flake8
       - name: Run flake8
         run: |
           flake8
+#Uruchomienie testow jednostkowych
       - name: Run unittest
         run: |
           python -m unittest discover
