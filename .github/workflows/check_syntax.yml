@@ -6,12 +6,15 @@ on:
       - check_syntax
 
 jobs:
-  build:
+  check_python_version:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: [3.9, 3.10, 3.11]
+        python-version:
+          - 3.9
+          - 3.10
+          - 3.11
 
     steps:
     - name: Set up Python
