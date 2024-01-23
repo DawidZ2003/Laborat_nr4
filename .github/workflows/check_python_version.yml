@@ -1,26 +1,30 @@
+#Nazwa workflowa
 name: check_python_version
 
+#Kiedy ma sie uruchomic z uwzglednieniem galezi
 on:
   push:
     branches:
       - check_python_version
 
+#Na jakim systemie ma zostac uruchomione
 jobs:
   build:
     runs-on: ubuntu-latest
 
+#Dzialania do wykonania
     steps:
       - name: Check out the code
         uses: actions/checkout@v3
-
+#Wersja pythona
       - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
-
+#Aktualizacja pip
       - name: Update pip
         run: |
           python -m pip install --upgrade pip
-          
+#Wyswietenie wersji pythona
       - name: Display Python version
         run: python --version
